@@ -110,6 +110,17 @@ ul { list-style: none; }
 }
 
 
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo img {
+  height: 54px;
+  width: auto;
+  display: block;
+}
+
 .nav ul {
   display: flex;
   gap: 2px;
@@ -1847,7 +1858,11 @@ ul { list-style: none; }
   }
 
   .header-content {
-    padding: 12px 0;
+    padding: 10px 0;
+  }
+
+  .header-logo img {
+    height: 40px;
   }
 
   .page-hero-content h1 {
