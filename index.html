@@ -5,424 +5,1502 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grace School – Foundation for Life…since 1998</title>
-  <meta name="description" content="Grace School – Foundation for Life…since 1998. Quality education in Gopalganj, Bihar since 1998.">
+  <title>Grace School – Rooted & Rising • Since 1998</title>
+  <meta name="description" content="Grace School – Rooted & Rising. Quality education rooted in faith, hope, and love — Gopalganj, Bihar, since 1998.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="css/grace.css?v=3">
+  <link rel="stylesheet" href="css/grace.css">
   <link rel="icon" href="https://www.graceschool.co.in/assets/img/cropped-Grace-School-Side-Logo.jpg">
+
+  <style>
+    /* ===== ROOTED & RISING — Design System ===== */
+    :root {
+      --rr-indigo: #23208C;
+      --rr-navy: #1A1460;
+      --rr-green: #1D5C2A;
+      --rr-gold: #F0C030;
+      --rr-tint: #F4F2FB;
+      --rr-white: #FFFFFF;
+      --rr-font-display: 'Playfair Display', Georgia, serif;
+      --rr-font-body: 'DM Sans', Helvetica, Arial, sans-serif;
+      --rr-font-mono: 'Space Mono', 'Courier New', monospace;
+      --rr-radius: 20px;
+      --rr-radius-pill: 100px;
+      --rr-transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .rr-body {
+      font-family: var(--rr-font-body);
+      color: var(--rr-indigo);
+      line-height: 1.7;
+      overflow-x: hidden;
+      background: var(--rr-white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .rr-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .rr-section {
+      padding: 100px 0;
+    }
+
+    @media (max-width: 768px) {
+      .rr-section { padding: 64px 0; }
+    }
+
+    /* ===== NAVBAR ===== */
+    .rr-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: transparent;
+      transition: background 0.4s ease, border-color 0.4s ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    .rr-header.scrolled {
+      background: var(--rr-white);
+      border-bottom: 2px solid var(--rr-indigo);
+      box-shadow: 0 4px 30px rgba(35, 32, 140, 0.06);
+    }
+
+    .rr-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 14px 0;
+    }
+
+    .rr-logo img {
+      height: 54px;
+      width: auto;
+      display: block;
+    }
+
+    .rr-nav ul {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      list-style: none;
+    }
+
+    .rr-nav a {
+      font-family: var(--rr-font-body);
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.9);
+      padding: 8px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: var(--rr-transition);
+      white-space: nowrap;
+      letter-spacing: 0.3px;
+      position: relative;
+    }
+
+    .rr-header.scrolled .rr-nav a {
+      color: var(--rr-indigo);
+    }
+
+    .rr-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      width: 60%;
+      height: 2px;
+      background: var(--rr-gold);
+      border-radius: 2px;
+      transition: transform 0.3s ease;
+    }
+
+    .rr-nav a:hover::after,
+    .rr-nav a.active::after {
+      transform: translateX(-50%) scaleX(1);
+    }
+
+    .rr-nav a:hover {
+      color: var(--rr-gold) !important;
+    }
+
+    .rr-nav-cta {
+      display: inline-flex !important;
+      align-items: center;
+      gap: 8px;
+      background: var(--rr-gold) !important;
+      color: var(--rr-navy) !important;
+      font-weight: 700 !important;
+      padding: 10px 24px !important;
+      border-radius: var(--rr-radius-pill) !important;
+      font-size: 13px !important;
+      letter-spacing: 0.3px;
+      transition: var(--rr-transition);
+    }
+
+    .rr-nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(240, 192, 48, 0.35);
+    }
+
+    .rr-nav-cta::after { display: none !important; }
+
+    .rr-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 1100;
+    }
+
+    .rr-hamburger span {
+      width: 26px;
+      height: 2.5px;
+      background: var(--rr-white);
+      border-radius: 3px;
+      transition: var(--rr-transition);
+    }
+
+    .rr-header.scrolled .rr-hamburger span {
+      background: var(--rr-indigo);
+    }
+
+    /* Mobile overlay nav */
+    .rr-mobile-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--rr-navy);
+      z-index: 1050;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .rr-mobile-overlay.open {
+      display: flex;
+      opacity: 1;
+    }
+
+    .rr-mobile-overlay a {
+      font-family: var(--rr-font-body);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--rr-gold);
+      text-decoration: none;
+      padding: 12px 24px;
+      transition: var(--rr-transition);
+    }
+
+    .rr-mobile-overlay a:hover {
+      color: var(--rr-white);
+      transform: scale(1.05);
+    }
+
+    .rr-mobile-overlay .rr-close-btn {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: var(--rr-gold);
+      font-size: 32px;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    /* ===== HERO ===== */
+    .rr-hero {
+      position: relative;
+      z-index: 1;
+    }
+
+    .rr-slider {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 560px;
+      max-height: 900px;
+      overflow: hidden;
+    }
+
+    .rr-slider-track {
+      display: flex;
+      transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      height: 100%;
+    }
+
+    .rr-slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .rr-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .rr-slide::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26,20,96,0.85) 0%, rgba(26,20,96,0.5) 50%, rgba(26,20,96,0.3) 100%);
+    }
+
+    .rr-hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      padding-bottom: 100px;
+    }
+
+    .rr-hero-content {
+      max-width: 720px;
+    }
+
+    .rr-hero-content h1 {
+      font-family: var(--rr-font-display);
+      font-size: clamp(2.4rem, 5.5vw, 4.8rem);
+      font-weight: 800;
+      color: var(--rr-white);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .rr-hero-content p {
+      font-family: var(--rr-font-body);
+      font-size: clamp(1rem, 1.4vw, 1.25rem);
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 36px;
+      max-width: 560px;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+
+    .rr-hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--rr-gold);
+      color: var(--rr-navy) !important;
+      font-family: var(--rr-font-body);
+      font-weight: 700;
+      font-size: 16px;
+      padding: 16px 40px;
+      border-radius: var(--rr-radius-pill);
+      text-decoration: none;
+      transition: var(--rr-transition);
+      letter-spacing: 0.3px;
+    }
+
+    .rr-hero-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(240, 192, 48, 0.35);
+    }
+
+    .rr-slider-dots {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 10;
+    }
+
+    .rr-slider-dots span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: var(--rr-transition);
+      border: 2px solid transparent;
+    }
+
+    .rr-slider-dots span.active {
+      background: var(--rr-gold);
+      border-color: var(--rr-gold);
+      box-shadow: 0 0 16px rgba(240, 192, 48, 0.5);
+      transform: scale(1.2);
+    }
+
+    /* ===== TICKER ===== */
+    .rr-ticker {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      background: var(--rr-gold);
+      padding: 12px 0;
+      overflow: hidden;
+    }
+
+    .rr-ticker-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--rr-font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--rr-navy);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      white-space: nowrap;
+      transition: opacity 0.4s ease;
+      min-height: 20px;
+    }
+
+    .rr-ticker-inner span {
+      margin: 0 12px;
+    }
+
+    .rr-ticker-dot {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      background: var(--rr-navy);
+      border-radius: 50%;
+      margin: 0 8px;
+    }
+
+    /* ===== MISSION STRIP ===== */
+    .rr-mission {
+      background: var(--rr-tint);
+      padding: 80px 0;
+    }
+
+    .rr-mission-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      text-align: center;
+    }
+
+    .rr-mission-number {
+      font-family: var(--rr-font-display);
+      font-size: clamp(3rem, 5vw, 4.2rem);
+      font-weight: 800;
+      color: var(--rr-gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .rr-mission-label {
+      font-family: var(--rr-font-body);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--rr-indigo);
+      margin-bottom: 8px;
+    }
+
+    .rr-mission-desc {
+      font-family: var(--rr-font-body);
+      font-size: 14px;
+      color: var(--rr-indigo);
+      opacity: 0.65;
+      line-height: 1.6;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    /* ===== ABOUT ===== */
+    .rr-about {
+      background: var(--rr-white);
+      padding: 100px 0;
+    }
+
+    .rr-about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .rr-pullquote {
+      font-family: var(--rr-font-display);
+      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+      font-weight: 600;
+      font-style: italic;
+      color: var(--rr-indigo);
+      line-height: 1.4;
+      border-left: 4px solid var(--rr-gold);
+      padding-left: 28px;
+    }
+
+    .rr-about-text p {
+      font-family: var(--rr-font-body);
+      font-size: 15px;
+      color: var(--rr-indigo);
+      opacity: 0.75;
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+
+    .rr-badge-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .rr-badge {
+      display: inline-block;
+      font-family: var(--rr-font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: var(--rr-green);
+      color: var(--rr-white);
+      padding: 8px 18px;
+      border-radius: var(--rr-radius-pill);
+    }
+
+    /* ===== THREE PILLARS ===== */
+    .rr-pillars {
+      background: var(--rr-navy);
+      padding: 100px 0;
+    }
+
+    .rr-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .rr-pillar-card {
+      background: var(--rr-indigo);
+      border-top: 4px solid var(--rr-gold);
+      border-radius: var(--rr-radius);
+      padding: 48px 36px;
+      text-align: center;
+      transition: var(--rr-transition);
+    }
+
+    .rr-pillar-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 0 2px var(--rr-gold), 0 20px 60px rgba(240, 192, 48, 0.15);
+    }
+
+    .rr-pillar-icon {
+      font-size: 36px;
+      color: var(--rr-gold);
+      margin-bottom: 20px;
+    }
+
+    .rr-pillar-card h3 {
+      font-family: var(--rr-font-display);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--rr-white);
+      margin-bottom: 12px;
+    }
+
+    .rr-pillar-card p {
+      font-family: var(--rr-font-body);
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+    }
+
+    /* ===== LEGACY ===== */
+    .rr-legacy {
+      background: var(--rr-white);
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    .rr-legacy-label {
+      display: inline-block;
+      font-family: var(--rr-font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: var(--rr-green);
+      color: var(--rr-white);
+      padding: 6px 20px;
+      border-radius: var(--rr-radius-pill);
+      margin-bottom: 16px;
+    }
+
+    .rr-legacy h2 {
+      font-family: var(--rr-font-display);
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--rr-indigo);
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .rr-legacy-text {
+      max-width: 720px;
+      margin: 0 auto 56px;
+    }
+
+    .rr-legacy-text p {
+      font-family: var(--rr-font-body);
+      font-size: 15px;
+      color: var(--rr-indigo);
+      opacity: 0.7;
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
+    .rr-founders {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .rr-founder {
+      text-align: center;
+    }
+
+    .rr-founder-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--rr-gold);
+      box-shadow: 0 8px 30px rgba(240, 192, 48, 0.2);
+      margin: 0 auto 16px;
+      display: block;
+    }
+
+    .rr-founder-name {
+      font-family: var(--rr-font-body);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--rr-indigo);
+      margin-bottom: 2px;
+    }
+
+    .rr-founder-role {
+      font-family: var(--rr-font-mono);
+      font-size: 11px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--rr-green);
+    }
+
+    /* ===== VOLUNTEER CTA ===== */
+    .rr-volunteer-cta {
+      background: var(--rr-navy);
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    .rr-volunteer-cta h2 {
+      font-family: var(--rr-font-display);
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--rr-gold);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .rr-volunteer-cta p {
+      font-family: var(--rr-font-body);
+      font-size: 16px;
+      color: rgba(255,255,255,0.7);
+      max-width: 520px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+
+    .rr-volunteer-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--rr-gold);
+      color: var(--rr-navy) !important;
+      font-family: var(--rr-font-body);
+      font-weight: 700;
+      font-size: 18px;
+      padding: 18px 48px;
+      border-radius: var(--rr-radius-pill);
+      text-decoration: none;
+      transition: var(--rr-transition);
+      letter-spacing: 0.3px;
+    }
+
+    .rr-volunteer-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(240, 192, 48, 0.3);
+    }
+
+    /* ===== GRACE FAMILY ===== */
+    .rr-family {
+      background: var(--rr-tint);
+      padding: 100px 0;
+    }
+
+    .rr-family-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .rr-family-header h2 {
+      font-family: var(--rr-font-display);
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 700;
+      color: var(--rr-indigo);
+    }
+
+    .rr-family-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .rr-family-card {
+      background: var(--rr-white);
+      border: 1.5px solid var(--rr-indigo);
+      border-radius: var(--rr-radius);
+      padding: 36px 32px;
+      transition: var(--rr-transition);
+    }
+
+    .rr-family-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(35, 32, 140, 0.08);
+      border-color: var(--rr-gold);
+    }
+
+    .rr-family-card h3 {
+      font-family: var(--rr-font-body);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--rr-indigo);
+      margin-bottom: 4px;
+    }
+
+    .rr-family-card p {
+      font-family: var(--rr-font-body);
+      font-size: 13px;
+      color: var(--rr-indigo);
+      opacity: 0.6;
+      margin-bottom: 16px;
+    }
+
+    .rr-family-link {
+      font-family: var(--rr-font-body);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--rr-gold);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--rr-transition);
+    }
+
+    .rr-family-link:hover {
+      gap: 10px;
+      color: var(--rr-indigo);
+    }
+
+    /* ===== CONTACT ===== */
+    .rr-contact {
+      background: var(--rr-navy);
+      padding: 100px 0;
+    }
+
+    .rr-contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+
+    .rr-contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .rr-contact-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .rr-contact-icon {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(240, 192, 48, 0.12);
+      border-radius: 50%;
+      font-size: 16px;
+      color: var(--rr-gold);
+    }
+
+    .rr-contact-text {
+      font-family: var(--rr-font-body);
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.6;
+    }
+
+    .rr-contact-text strong {
+      color: var(--rr-white);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .rr-contact-form label {
+      display: block;
+      font-family: var(--rr-font-body);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--rr-white);
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .rr-contact-form input,
+    .rr-contact-form textarea {
+      width: 100%;
+      font-family: var(--rr-font-body);
+      font-size: 14px;
+      padding: 14px 18px;
+      border: none;
+      border-radius: 10px;
+      background: var(--rr-white);
+      color: var(--rr-indigo);
+      transition: var(--rr-transition);
+      margin-bottom: 18px;
+    }
+
+    .rr-contact-form input:focus,
+    .rr-contact-form textarea:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(240, 192, 48, 0.4);
+    }
+
+    .rr-contact-form textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .rr-submit-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: var(--rr-gold);
+      color: var(--rr-navy) !important;
+      font-family: var(--rr-font-body);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 16px 32px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: var(--rr-transition);
+      letter-spacing: 0.3px;
+    }
+
+    .rr-submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(240, 192, 48, 0.3);
+    }
+
+    /* ===== FOOTER ===== */
+    .rr-footer {
+      background: var(--rr-navy);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 64px 0 0;
+    }
+
+    .rr-footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 48px;
+    }
+
+    .rr-footer-logo {
+      height: 50px;
+      width: auto;
+      margin-bottom: 12px;
+      background: var(--rr-white);
+      padding: 4px 10px;
+      border-radius: 8px;
+    }
+
+    .rr-footer-tagline {
+      font-family: var(--rr-font-body);
+      font-size: 13px;
+      font-style: italic;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 20px;
+    }
+
+    .rr-footer-social {
+      display: flex;
+      gap: 12px;
+    }
+
+    .rr-footer-social a {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 50%;
+      color: rgba(255,255,255,0.6);
+      font-size: 15px;
+      text-decoration: none;
+      transition: var(--rr-transition);
+    }
+
+    .rr-footer-social a:hover {
+      background: var(--rr-gold);
+      border-color: var(--rr-gold);
+      color: var(--rr-navy);
+      transform: translateY(-3px);
+    }
+
+    .rr-footer h4 {
+      font-family: var(--rr-font-body);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--rr-white);
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .rr-footer-links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .rr-footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .rr-footer-links a {
+      font-family: var(--rr-font-body);
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: var(--rr-transition);
+    }
+
+    .rr-footer-links a:hover {
+      color: var(--rr-gold);
+      padding-left: 6px;
+    }
+
+    .rr-footer-address {
+      font-family: var(--rr-font-body);
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+    }
+
+    .rr-footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin-top: 48px;
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--rr-font-body);
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .rr-footer-bottom a {
+      color: var(--rr-gold);
+      text-decoration: none;
+    }
+
+    .rr-footer-bottom a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== REVEAL ANIMATIONS ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .rr-mission-grid { gap: 24px; }
+      .rr-about-grid { gap: 40px; }
+      .rr-founders { gap: 24px; }
+    }
+
+    @media (max-width: 900px) {
+      .rr-nav { display: none; }
+      .rr-hamburger { display: flex; }
+      .rr-header-inner { padding: 12px 0; }
+      .rr-logo img { height: 44px; }
+
+      .rr-mission-grid { grid-template-columns: 1fr; gap: 40px; }
+      .rr-about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .rr-pillars-grid { grid-template-columns: 1fr; gap: 20px; }
+      .rr-founders { grid-template-columns: 1fr; gap: 40px; }
+      .rr-family-grid { grid-template-columns: 1fr; }
+      .rr-contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .rr-footer-grid { grid-template-columns: 1fr; gap: 32px; }
+
+      .rr-slider { height: 70vh; min-height: 420px; }
+      .rr-hero-content h1 { font-size: 2.2rem; }
+      .rr-pillar-card { padding: 36px 24px; }
+      .rr-founder-img { width: 160px; height: 160px; }
+    }
+
+    @media (max-width: 600px) {
+      .rr-section { padding: 56px 0; }
+      .rr-mission { padding: 56px 0; }
+      .rr-about { padding: 56px 0; }
+      .rr-pillars { padding: 56px 0; }
+      .rr-legacy { padding: 56px 0; }
+      .rr-volunteer-cta { padding: 56px 0; }
+      .rr-family { padding: 56px 0; }
+      .rr-contact { padding: 56px 0; }
+
+      .rr-slider { height: 60vh; min-height: 360px; }
+      .rr-hero-content h1 { font-size: 1.8rem; }
+      .rr-hero-cta { font-size: 14px; padding: 14px 28px; }
+      .rr-ticker-inner { font-size: 11px; letter-spacing: 1px; }
+
+      .rr-volunteer-btn { font-size: 15px; padding: 14px 32px; }
+
+      .rr-footer-grid { gap: 32px; }
+      .rr-footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+
+      .rr-contact-grid { gap: 32px; }
+      .rr-founder-img { width: 140px; height: 140px; }
+
+      .rr-container { padding: 0 16px; }
+    }
+  </style>
 </head>
-<body>
+<body class="rr-body">
 
-  <div class="site-wrapper">
-
-    <!-- Header -->
-    <header class="header" id="header">
-      <div class="container">
-        <div class="header-content">
-          <div class="header-logo">
-            <a href="index.html">
-              <img src="images/grace-logo-2.png?v=2" alt="Grace School">
-            </a>
-          </div>
-          <nav class="nav" id="mainNav">
-            <ul>
-              <li><a href="index.html" class="active">Home</a></li>
-              <li><a href="grace-school.html">Grace School</a></li>
-              <li><a href="photos.html">Photos</a></li>
-              <li><a href="videos.html">Videos</a></li>
-              <li><a href="projects-partnerships.html">Projects & Partnerships</a></li>
-              <li><a href="volunteer.html">Volunteer of Grace</a></li>
-              <li><a href="downloads-contact.html">Downloads & Contact</a></li>
-            </ul>
-          </nav>
-          <div class="header-actions">
-            <a href="https://linktr.ee/vogtrust2021" target="_blank" class="btn-primary btn-sm">
-              <i class="fas fa-heart"></i> Volunteer
-            </a>
-          </div>
-          <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-          </button>
-        </div>
-      </div>
-    </header>
-
-    <!-- Hero -->
-    <section class="hero">
-      <div class="slider-container" id="sliderContainer">
-        <div class="slider-track" id="sliderTrack">
-          <div class="slide"><img src="https://www.graceschool.co.in/auth/upload/slider/grace-school-slider-1.jpg" alt="Grace School"></div>
-          <div class="slide"><img src="https://www.graceschool.co.in/auth/upload/slider/grace-school-slider-2.jpg" alt="Grace School"></div>
-          <div class="slide"><img src="https://www.graceschool.co.in/auth/upload/slider/grace-school-slider-3.jpg" alt="Grace School"></div>
-          <div class="slide"><img src="https://www.graceschool.co.in/auth/upload/slider/grace-school-slider-4.jpg" alt="Grace School"></div>
-          <div class="slide"><img src="https://www.graceschool.co.in/auth/upload/slider/grace-school-slider-5.jpg" alt="Grace School"></div>
-          <div class="slide"><img src="https://www.graceschool.co.in/auth/upload/slider/grace-school-slider-6.jpg" alt="Grace School"></div>
-        </div>
-        <div class="hero-overlay">
-          <div class="container">
-            <div class="hero-text">
-              <span class="hero-badge">Since 1998</span>
-              <h1>Foundation for Life</h1>
-              <p>Quality Education through Continuous Innovation — Gopalganj, Bihar</p>
-              <div class="hero-buttons">
-                <a href="grace-school.html" class="btn-primary btn-lg">Explore More</a>
-                <a href="downloads-contact.html" class="btn-outline btn-lg">Contact Us</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="slider-dots" id="sliderDots"></div>
-      </div>
-    </section>
-
-    <!-- Get In Touch + Volunteer -->
-    <section class="section section-contact">
-      <div class="container">
-        <div class="grid-2">
-          <div class="contact-form-wrapper">
-            <div class="section-label">Get In Touch</div>
-            <h2 class="section-heading">We'd Love to Hear <span class="text-accent">From You</span></h2>
-            <form id="contactForm" class="premium-form">
-              <div class="form-group">
-                <label>Name <span class="required">*</span></label>
-                <input type="text" required placeholder="Your full name">
-              </div>
-              <div class="form-group">
-                <label>Email <span class="required">*</span></label>
-                <input type="email" required placeholder="Your email address">
-              </div>
-              <div class="form-group">
-                <label>Mobile No <span class="required">*</span></label>
-                <input type="tel" maxlength="10" required placeholder="Your mobile number">
-              </div>
-              <div class="form-group">
-                <label>Message <span class="required">*</span></label>
-                <textarea rows="3" required placeholder="How can we help you?"></textarea>
-              </div>
-              <button type="submit" class="btn-primary btn-block">
-                Send Message <i class="fas fa-paper-plane"></i>
-              </button>
-            </form>
-          </div>
-          <div class="volunteer-wrapper">
-            <div class="glass-card volunteer-card">
-              <div class="volunteer-badge">
-                <i class="fas fa-hand-holding-heart"></i>
-                <span>Volunteers of Grace</span>
-              </div>
-              <img src="https://www.graceschool.co.in/assets/img/Grace-School-Side-Logo.jpg" alt="Grace School" class="volunteer-logo">
-              <h3>TO VOLUNTEER, INTERN OR<br>BECOME A MEMBER</h3>
-              <p>Join our community of changemakers. Your time and skills can make a difference in a child's life.</p>
-              <a href="https://linktr.ee/vogtrust2021" target="_blank" class="btn-primary btn-lg">
-                <i class="fas fa-heart"></i> @volunteersofgrace
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section class="section about-section">
-      <div class="container">
-        <div class="grid-2 align-center">
-          <div class="about-image-wrapper">
-            <div class="about-image-frame">
-              <img src="https://www.graceschool.co.in/assets/img/Grace-School-Side-Image-1.jpg" alt="Grace School Building">
-            </div>
-            <div class="experience-badge">
-              <span class="exp-number">26+</span>
-              <span class="exp-label">Years of<br>Excellence</span>
-            </div>
-          </div>
-          <div class="about-content">
-            <div class="section-label light">About Grace School</div>
-            <h2 class="section-heading light">Building Strong Foundations<br><span class="text-accent">for Life…since 1998</span></h2>
-            <p>We believe in learning, listening, sharing and caring. We aspire to love, respect, understand and encourage. We are here to gently inspire.</p>
-            <p><strong>Grace School</strong>, in Gopalganj, Bihar, India, was conceived and founded in the year 1998. It was registered in 2002 and is recognized by the Department of Education, Government of Bihar, India.</p>
-            <div class="about-features">
-              <div class="about-feature">
-                <i class="fas fa-check-circle"></i>
-                <span>NCERT Curriculum</span>
-              </div>
-              <div class="about-feature">
-                <i class="fas fa-check-circle"></i>
-                <span>RTE Act Compliant</span>
-              </div>
-              <div class="about-feature">
-                <i class="fas fa-check-circle"></i>
-                <span>Scholarships Available</span>
-              </div>
-              <div class="about-feature">
-                <i class="fas fa-check-circle"></i>
-                <span>24+ Years of Service</span>
-              </div>
-            </div>
-            <a href="grace-school.html" class="btn-primary">Learn More <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="section-bg-shape"></div>
-    </section>
-
-    <!-- Stats -->
-    <section class="section section-stats">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-label">Our Impact</div>
-          <h2 class="section-heading">Grace School by the <span class="text-accent">Numbers</span></h2>
-          <p class="section-sub">A legacy built on faith, hope, and love for over two decades.</p>
-        </div>
-        <div class="stats-grid" id="statsGrid">
-          <div class="stat-card">
-            <div class="stat-icon">
-              <img src="https://www.graceschool.co.in/assets/img/icon/team.png" alt="Team">
-            </div>
-            <div class="stat-number"><span class="counter" data-target="45">0</span>+</div>
-            <div class="stat-label">The Dedicated Team</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon">
-              <img src="https://www.graceschool.co.in/assets/img/icon/stars.png" alt="Stars">
-            </div>
-            <div class="stat-number"><span class="counter" data-target="4900">0</span>+</div>
-            <div class="stat-label">Our Shining Stars</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon">
-              <img src="https://www.graceschool.co.in/assets/img/icon/friends.png" alt="Friends">
-            </div>
-            <div class="stat-number"><span class="counter" data-target="244">0</span>+</div>
-            <div class="stat-label">Friends of Grace School</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon">
-              <img src="https://www.graceschool.co.in/assets/img/icon/customer-review.png" alt="Years">
-            </div>
-            <div class="stat-number"><span class="counter" data-target="26">0</span>+</div>
-            <div class="stat-label">Total Years</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Uniqueness -->
-    <section class="section section-uniqueness">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-label">What Sets Us Apart</div>
-          <h2 class="section-heading">Inviting <span class="text-accent">Uniqueness</span></h2>
-          <p class="section-sub">Our core pillars that shape every child's journey at Grace School.</p>
-        </div>
-        <div class="grid-3">
-          <div class="feature-card">
-            <div class="feature-icon-wrapper">
-              <div class="feature-icon">
-                <img src="https://www.graceschool.co.in/assets/img/icon/faith.png" alt="Strong Foundation">
-              </div>
-            </div>
-            <h3>Strong Foundation</h3>
-            <p>Faith, Hope, Love, Care, Academics, Activities, Health & Sports</p>
-            <div class="feature-line"></div>
-          </div>
-          <div class="feature-card featured">
-            <div class="feature-icon-wrapper">
-              <div class="feature-icon">
-                <img src="https://www.graceschool.co.in/assets/img/icon/love.png" alt="Loving Relationships">
-              </div>
-            </div>
-            <h3>Loving Relationships</h3>
-            <p>Friendships, Brotherhood, Respect, Tolerance, Service, Patriotism</p>
-            <div class="feature-line"></div>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon-wrapper">
-              <div class="feature-icon">
-                <img src="https://www.graceschool.co.in/assets/img/icon/inspiration.png" alt="Purposeful Learning">
-              </div>
-            </div>
-            <h3>Purposeful Learning</h3>
-            <p>Self Discovery, Career Exposure, Goal Setting, Smart & Independent Skills</p>
-            <div class="feature-line"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Partners -->
-    <section class="section section-partners">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-label light">Our Network</div>
-          <h2 class="section-heading light">To Know <span class="text-accent">More</span></h2>
-          <p class="section-sub light">Explore our sister concerns and partner organizations.</p>
-        </div>
-        <div class="partners-carousel">
-          <div class="partner-track" id="partnerTrack">
-            <div class="partner-card">
-              <a href="http://www.gracejuniors.in/" target="_blank">
-                <img src="https://www.graceschool.co.in/assets/img/slide-logo/logo.png" alt="Grace Juniors">
-                <h4>Grace Juniors</h4>
-              </a>
-            </div>
-            <div class="partner-card">
-              <a href="https://www.haydeheritage.com/" target="_blank">
-                <img src="https://www.graceschool.co.in/assets/img/slide-logo/Hayde-Heritage.jpg" alt="Hayde Heritage">
-                <h4>Hayde Heritage</h4>
-              </a>
-            </div>
-            <div class="partner-card">
-              <a href="http://www.anupamyunas.com" target="_blank">
-                <img src="https://www.graceschool.co.in/assets/img/slide-logo/Anupam-Yunas.png" alt="Anupam Yunas">
-                <h4>Anupam Yunas</h4>
-              </a>
-            </div>
-            <div class="partner-card">
-              <a href="http://graceschool.co.in/friends/" target="_blank">
-                <img src="https://www.graceschool.co.in/assets/img/slide-logo/frogscopy.jpg" alt="VOG">
-                <h4>Volunteers of Grace</h4>
-              </a>
-            </div>
-          </div>
-          <div class="carousel-controls">
-            <button class="carousel-btn" id="partnerPrev" aria-label="Previous"><i class="fas fa-arrow-left"></i></button>
-            <button class="carousel-btn" id="partnerNext" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Founding Members -->
-    <section class="section section-members">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-label">Our Legacy</div>
-          <h2 class="section-heading">Founding <span class="text-accent">Members</span></h2>
-          <p class="section-sub">The visionary hearts who planted the seeds of Grace School.</p>
-        </div>
-        <div class="grid-3">
-          <div class="member-card">
-            <div class="member-image">
-              <img src="https://www.graceschool.co.in/assets/gallery/founding-members/CIARA%20PEARMAN.jpeg" alt="Ciara Pearman & Angela Kelly">
-              <div class="member-overlay">
-                <span>Pioneer Founders</span>
-              </div>
-            </div>
-            <div class="member-info">
-              <h3>Ciara Pearman & Angela Kelly</h3>
-              <p>Pioneer Founding Members</p>
-            </div>
-          </div>
-          <div class="member-card">
-            <div class="member-image">
-              <img src="https://www.graceschool.co.in/assets/gallery/founding-members/ANGELA%20KELLY.jpeg" alt="Angela Kelly, Anupam Yunas & Ciara Pearman">
-              <div class="member-overlay">
-                <span>Founders</span>
-              </div>
-            </div>
-            <div class="member-info">
-              <h3>Angela Kelly, Anupam Yunas & Ciara Pearman</h3>
-              <p>Founding Members</p>
-            </div>
-          </div>
-          <div class="member-card">
-            <div class="member-image">
-              <img src="https://www.graceschool.co.in/assets/gallery/founding-members/REENA%20LAL.jpeg" alt="Ciara Pearman, Reena Lal & Angela Kelly">
-              <div class="member-overlay">
-                <span>Founders</span>
-              </div>
-            </div>
-            <div class="member-info">
-              <h3>Ciara Pearman, Reena Lal & Angela Kelly</h3>
-              <p>Founding Members</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Volunteer CTA -->
-    <section class="section section-cta">
-      <div class="container">
-        <div class="cta-card">
-          <div class="cta-content">
-            <span class="cta-badge"><i class="fas fa-heart"></i> Make a Difference</span>
-            <h2>TO VOLUNTEER, INTERN OR<br>BECOME A MEMBER</h2>
-            <p>Your journey of service starts here. Click below to join the Volunteers of Grace family.</p>
-            <a href="https://linktr.ee/vogtrust2021" target="_blank" class="btn-primary btn-lg">
-              <i class="fas fa-hand-holding-heart"></i> @volunteersofgrace
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-main">
-        <div class="container">
-          <div class="footer-grid">
-            <div class="footer-col footer-brand">
-              <img src="images/grace-logo-2.png?v=2" alt="Grace School" class="footer-logo">
-              <p class="tagline">"Quality Education through Continuous Innovation"</p>
-              <div class="footer-social">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
-              </div>
-            </div>
-            <div class="footer-col">
-              <h4>Contact</h4>
-              <ul class="footer-contact">
-                <li>
-                  <i class="fas fa-map-marker-alt"></i>
-                  <span>Yadavpur Mission Road,<br>Sareya Ward #2, Gopalganj,<br>Bihar – 841428</span>
-                </li>
-                <li>
-                  <i class="fas fa-phone"></i>
-                  <span>+91 9631977136<br>+91 9431453106</span>
-                </li>
-                <li>
-                  <i class="fas fa-envelope"></i>
-                  <span>graceschool1998@gmail.com<br>info@graceschool.co.in</span>
-                </li>
-              </ul>
-            </div>
-            <div class="footer-col">
-              <h4>Quick Links</h4>
-              <ul class="footer-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="grace-school.html">Grace School</a></li>
-                <li><a href="photos.html">Photos</a></li>
-                <li><a href="videos.html">Videos</a></li>
-                <li><a href="projects-partnerships.html">Projects & Partnerships</a></li>
-                <li><a href="volunteer.html">Volunteer of Grace</a></li>
-                <li><a href="downloads-contact.html">Downloads & Contact Us</a></li>
-              </ul>
-            </div>
-            <div class="footer-col">
-              <h4>Location</h4>
-              <div class="footer-map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3571.1223686066032!2d84.44109749296373!3d26.484004594382505!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8fe959fb7c4a5956!2sGrace%20School!5e0!3m2!1sen!2sin!4v1649658144028!5m2!1sen!2sin" width="100%" height="200" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="container">
-          <div class="footer-bottom-content">
-            <p>&copy; 2026 <a href="#">Grace School</a>. All rights reserved.</p>
-            <p><a href="https://webmail.graceschool.co.in/login.php" target="_blank">Webmail</a></p>
-          </div>
-        </div>
-      </div>
-    </footer>
-
+  <!-- ===== MOBILE OVERLAY ===== -->
+  <div class="rr-mobile-overlay" id="mobileOverlay">
+    <button class="rr-close-btn" id="mobileClose" aria-label="Close menu">
+      <i class="fas fa-times"></i>
+    </button>
+    <a href="index.html">Home</a>
+    <a href="grace-school.html">Grace School</a>
+    <a href="photos.html">Photos</a>
+    <a href="videos.html">Videos</a>
+    <a href="projects-partnerships.html">Projects & Partnerships</a>
+    <a href="volunteer.html">Volunteer of Grace</a>
+    <a href="downloads-contact.html">Downloads & Contact</a>
   </div>
 
-  <script src="js/main.js"></script>
+  <!-- ===== HEADER / NAVBAR ===== -->
+  <header class="rr-header" id="header">
+    <div class="rr-container">
+      <div class="rr-header-inner">
+        <div class="rr-logo">
+          <a href="index.html">
+            <img src="images/grace-logo-2.png" alt="Grace School">
+          </a>
+        </div>
+        <nav class="rr-nav" id="mainNav">
+          <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="grace-school.html">Grace School</a></li>
+            <li><a href="photos.html">Photos</a></li>
+            <li><a href="videos.html">Videos</a></li>
+            <li><a href="projects-partnerships.html">Projects & Partnerships</a></li>
+            <li><a href="volunteer.html">Volunteer of Grace</a></li>
+            <li><a href="downloads-contact.html">Downloads & Contact</a></li>
+          </ul>
+        </nav>
+        <a href="volunteer.html" class="rr-nav-cta">
+          <i class="fas fa-heart"></i> Volunteer
+        </a>
+        <button class="rr-hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="rr-hero">
+    <div class="rr-slider" id="sliderContainer">
+      <div class="rr-slider-track" id="sliderTrack">
+        <div class="rr-slide"><img src="https://www.graceschool.co.in/auth/upload/slider/grace-school-slider-1.jpg" alt="Grace School campus"></div>
+        <div class="rr-slide"><img src="https://www.graceschool.co.in/auth/upload/slider/grace-school-slider-2.jpg" alt="Grace School students"></div>
+        <div class="rr-slide"><img src="https://www.graceschool.co.in/auth/upload/slider/grace-school-slider-3.jpg" alt="Grace School activities"></div>
+        <div class="rr-slide"><img src="https://www.graceschool.co.in/auth/upload/slider/grace-school-slider-4.jpg" alt="Grace School grounds"></div>
+        <div class="rr-slide"><img src="https://www.graceschool.co.in/auth/upload/slider/grace-school-slider-5.jpg" alt="Grace School community"></div>
+        <div class="rr-slide"><img src="https://www.graceschool.co.in/auth/upload/slider/grace-school-slider-6.jpg" alt="Grace School events"></div>
+      </div>
+      <div class="rr-hero-overlay">
+        <div class="rr-container">
+          <div class="rr-hero-content">
+            <h1>26 Years of Planting Seeds. Watch Them Grow.</h1>
+            <p>Quality education rooted in faith, hope, and love — Gopalganj, Bihar, since 1998.</p>
+            <a href="grace-school.html" class="rr-hero-cta">Our Story &rarr;</a>
+          </div>
+        </div>
+      </div>
+      <div class="rr-slider-dots" id="sliderDots"></div>
+      <div class="rr-ticker" id="heroTicker">
+        <div class="rr-container">
+          <div class="rr-ticker-inner" id="tickerText">
+            <span>800+ Students</span>
+            <span class="rr-ticker-dot"></span>
+            <span>26 Years</span>
+            <span class="rr-ticker-dot"></span>
+            <span>NCERT Curriculum</span>
+            <span class="rr-ticker-dot"></span>
+            <span>RTE Compliant</span>
+            <span class="rr-ticker-dot"></span>
+            <span>Govt. Recognized</span>
+            <span class="rr-ticker-dot"></span>
+            <span>Bihar's Most Trusted</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MISSION STRIP ===== -->
+  <section class="rr-mission">
+    <div class="rr-container">
+      <div class="rr-mission-grid">
+        <div class="reveal">
+          <div class="rr-mission-number">26+</div>
+          <div class="rr-mission-label">Years of Service</div>
+          <div class="rr-mission-desc">Serving Gopalganj since 1998</div>
+        </div>
+        <div class="reveal">
+          <div class="rr-mission-number">800+</div>
+          <div class="rr-mission-label">Shining Stars</div>
+          <div class="rr-mission-desc">Students whose lives we've shaped</div>
+        </div>
+        <div class="reveal">
+          <div class="rr-mission-number">50+</div>
+          <div class="rr-mission-label">Dedicated Team</div>
+          <div class="rr-mission-desc">Educators, staff, and volunteers.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT SECTION ===== -->
+  <section class="rr-about">
+    <div class="rr-container">
+      <div class="rr-about-grid">
+        <div class="reveal">
+          <div class="rr-pullquote">
+            &ldquo;We believe in learning, listening, sharing and caring.&rdquo;
+          </div>
+        </div>
+        <div class="reveal rr-about-text">
+          <p><strong>Grace School</strong> was conceived and founded in Gopalganj, Bihar, in 1998 — born from a vision to bring quality, value-based education to a region where it was needed most.</p>
+          <p>Registered in 2002 and fully recognized by the Department of Education, Government of Bihar, Grace School is managed by <strong>SFORCE</strong> (Society for Reformation, Conservation & Education). As we step into our 26th year, we remain rooted in faith and rising with purpose.</p>
+          <p>We are proud to be one of Bihar's most trusted institutions, committed to nurturing every child's mind, body, and spirit.</p>
+          <div class="rr-badge-group">
+            <span class="rr-badge">NCERT</span>
+            <span class="rr-badge">RTE</span>
+            <span class="rr-badge">Govt. Recognized</span>
+            <span class="rr-badge">Est. 1998</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THREE PILLARS ===== -->
+  <section class="rr-pillars">
+    <div class="rr-container">
+      <div class="rr-pillars-grid">
+        <div class="rr-pillar-card reveal">
+          <div class="rr-pillar-icon"><i class="fas fa-tree"></i></div>
+          <h3>Foundation</h3>
+          <p>Faith, hope, love, care, academics, activities, health and sports — the bedrock of every Grace student's journey.</p>
+        </div>
+        <div class="rr-pillar-card reveal">
+          <div class="rr-pillar-icon"><i class="fas fa-hand-holding-heart"></i></div>
+          <h3>Relationships</h3>
+          <p>Friendships, brotherhood, respect, tolerance, service and patriotism — building character through connection.</p>
+        </div>
+        <div class="rr-pillar-card reveal">
+          <div class="rr-pillar-icon"><i class="fas fa-lightbulb"></i></div>
+          <h3>Purpose</h3>
+          <p>Self-discovery, career exposure, goal setting, smart and independent skills — preparing students for life beyond school.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LEGACY SECTION ===== -->
+  <section class="rr-legacy">
+    <div class="rr-container">
+      <span class="rr-legacy-label">Our Legacy</span>
+      <h2>Planted with Love, 1998.</h2>
+      <div class="rr-legacy-text">
+        <p>Grace School was founded by visionary hearts who believed that every child deserves a nurturing education rooted in faith. <strong>Ciara Pearman, Angela Kelly, and Anupam Yunas</strong> planted the seeds of what would become a lasting legacy of love, learning, and community in Gopalganj, Bihar.</p>
+        <p>Their unwavering dedication gave rise to an institution that has shaped thousands of lives over two and a half decades — a school where children don't just learn, they flourish.</p>
+      </div>
+      <div class="rr-founders">
+        <div class="rr-founder reveal">
+          <img class="rr-founder-img" src="https://www.graceschool.co.in/assets/gallery/founding-members/CIARA%20PEARMAN.jpeg" alt="Ciara Pearman">
+          <div class="rr-founder-name">Ciara Pearman</div>
+          <div class="rr-founder-role">Pioneer Founder</div>
+        </div>
+        <div class="rr-founder reveal">
+          <img class="rr-founder-img" src="https://www.graceschool.co.in/assets/gallery/founding-members/ANGELA%20KELLY.jpeg" alt="Angela Kelly">
+          <div class="rr-founder-name">Angela Kelly</div>
+          <div class="rr-founder-role">Pioneer Founder</div>
+        </div>
+        <div class="rr-founder reveal">
+          <img class="rr-founder-img" src="https://www.graceschool.co.in/assets/gallery/founding-members/REENA%20LAL.jpeg" alt="Reena Lal">
+          <div class="rr-founder-name">Reena Lal</div>
+          <div class="rr-founder-role">Founding Member</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VOLUNTEER CTA (EXACTLY ONCE) ===== -->
+  <section class="rr-volunteer-cta" id="volunteerCta">
+    <div class="rr-container">
+      <h2>Your Skills Can Change a Child's Life.</h2>
+      <p>Whether you're a teacher, a mentor, or simply someone who cares — your time and talent can make a world of difference.</p>
+      <a href="volunteer.html" class="rr-volunteer-btn">@volunteersofgrace &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ===== THE GRACE FAMILY ===== -->
+  <section class="rr-family">
+    <div class="rr-container">
+      <div class="rr-family-header">
+        <h2>The Grace Family</h2>
+      </div>
+      <div class="rr-family-grid">
+        <div class="rr-family-card reveal">
+          <h3>Grace Juniors</h3>
+          <p>Early childhood education building bright foundations.</p>
+          <a href="https://www.gracejuniors.in/" target="_blank" class="rr-family-link">Visit <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="rr-family-card reveal">
+          <h3>Hayde Heritage</h3>
+          <p>Preserving culture while embracing the future.</p>
+          <a href="https://haydeheritage.com/" target="_blank" class="rr-family-link">Visit <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="rr-family-card reveal">
+          <h3>Anupam Yunas</h3>
+          <p>Community outreach and empowerment initiatives.</p>
+          <a href="volunteer.html" class="rr-family-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="rr-family-card reveal">
+          <h3>Volunteers of Grace</h3>
+          <p>A global community serving with love and purpose.</p>
+          <a href="volunteer.html" class="rr-family-link">Join <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT SECTION ===== -->
+  <section class="rr-contact">
+    <div class="rr-container">
+      <div class="rr-contact-grid">
+        <div class="rr-contact-info">
+          <div class="rr-contact-item">
+            <div class="rr-contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="rr-contact-text">
+              <strong>Visit Us</strong>
+              Yadavpur Mission Road, Sareya Ward #2,<br>
+              Gopalganj, Bihar &ndash; 841428, India
+            </div>
+          </div>
+          <div class="rr-contact-item">
+            <div class="rr-contact-icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="rr-contact-text">
+              <strong>Call Us</strong>
+              +91 9631977136 &bull; +91 9431453106
+            </div>
+          </div>
+          <div class="rr-contact-item">
+            <div class="rr-contact-icon"><i class="fas fa-envelope"></i></div>
+            <div class="rr-contact-text">
+              <strong>Email Us</strong>
+              graceschool1998@gmail.com<br>
+              info@graceschool.co.in
+            </div>
+          </div>
+        </div>
+        <form class="rr-contact-form" id="contactForm">
+          <label for="rrName">Name</label>
+          <input type="text" id="rrName" name="name" placeholder="Your full name" required>
+
+          <label for="rrEmail">Email</label>
+          <input type="email" id="rrEmail" name="email" placeholder="Your email address" required>
+
+          <label for="rrPhone">Phone</label>
+          <input type="tel" id="rrPhone" name="phone" placeholder="Your phone number" maxlength="10">
+
+          <label for="rrMessage">Message</label>
+          <textarea id="rrMessage" name="message" placeholder="How can we help you?" required></textarea>
+
+          <button type="submit" class="rr-submit-btn">
+            Send Message <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="rr-footer">
+    <div class="rr-container">
+      <div class="rr-footer-grid">
+        <div>
+          <img src="images/grace-logo-2.png" alt="Grace School" class="rr-footer-logo">
+          <p class="rr-footer-tagline">&ldquo;Quality Education through Continuous Innovation&rdquo;</p>
+          <div class="rr-footer-social">
+            <a href="https://www.instagram.com/volunteersofgrace/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/volunteersofgrace" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.youtube.com/@volunteersofgrace" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="mailto:graceschool1998@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="rr-footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="grace-school.html">Grace School</a></li>
+            <li><a href="photos.html">Photos</a></li>
+            <li><a href="videos.html">Videos</a></li>
+            <li><a href="projects-partnerships.html">Projects & Partnerships</a></li>
+            <li><a href="volunteer.html">Volunteer of Grace</a></li>
+            <li><a href="downloads-contact.html">Downloads & Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Location</h4>
+          <p class="rr-footer-address">
+            Yadavpur Mission Road,<br>
+            Sareya Ward #2, Gopalganj,<br>
+            Bihar &ndash; 841428, India
+          </p>
+        </div>
+      </div>
+      <div class="rr-footer-bottom">
+        <p>&copy; 2026 <a href="index.html">Grace School</a>. All rights reserved.</p>
+        <p>Built with <i class="fas fa-heart" style="color: var(--rr-gold);"></i> for Grace School</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <!-- main.js intentionally not loaded — inline script handles all interactions -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+      // ===== HAMBURGER / MOBILE OVERLAY =====
+      var hamburger = document.getElementById('hamburger');
+      var overlay = document.getElementById('mobileOverlay');
+      var closeBtn = document.getElementById('mobileClose');
+
+      function openMobile() {
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMobile() {
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      hamburger.addEventListener('click', openMobile);
+      closeBtn.addEventListener('click', closeMobile);
+      overlay.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', closeMobile);
+      });
+
+      // ===== HEADER SCROLL =====
+      var header = document.getElementById('header');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 80) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      }, { passive: true });
+
+      // ===== TICKER CYCLING =====
+      var tickerItems = [
+        '800+ Students',
+        '26 Years',
+        'NCERT Curriculum',
+        'RTE Compliant',
+        'Govt. Recognized',
+        'Bihar\'s Most Trusted'
+      ];
+      var tickerEl = document.getElementById('tickerText');
+      var tickerIndex = 0;
+      var tickerDot = '<span class="rr-ticker-dot"></span>';
+
+      function cycleTicker() {
+        tickerIndex = (tickerIndex + 1) % tickerItems.length;
+        var next = tickerItems[tickerIndex];
+        var prev = tickerItems[(tickerIndex - 1 + tickerItems.length) % tickerItems.length];
+        tickerEl.style.opacity = '0';
+        setTimeout(function() {
+          tickerEl.innerHTML = '<span>' + next + '</span>';
+          tickerEl.style.opacity = '1';
+        }, 300);
+      }
+
+      setInterval(cycleTicker, 3500);
+
+      // ===== FORM HANDLER =====
+      var contactForm = document.getElementById('contactForm');
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var btn = contactForm.querySelector('.rr-submit-btn');
+          var original = btn.innerHTML;
+          btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+          btn.disabled = true;
+
+          setTimeout(function() {
+            btn.innerHTML = '<i class="fas fa-check-circle"></i> Message Sent!';
+            contactForm.reset();
+
+            setTimeout(function() {
+              btn.innerHTML = original;
+              btn.disabled = false;
+            }, 3000);
+          }, 1500);
+        });
+      }
+
+      // ===== SCROLL REVEAL =====
+      var revealElements = document.querySelectorAll('.reveal');
+      var revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      revealElements.forEach(function(el) {
+        revealObserver.observe(el);
+      });
+
+      // ===== SLIDER (support for existing main.js slider code) =====
+      var sliderDots = document.getElementById('sliderDots');
+      var sliderTrack = document.getElementById('sliderTrack');
+      var slides = sliderTrack.querySelectorAll('.rr-slide');
+      var totalSlides = slides.length;
+      var currentSlide = 0;
+      var autoSlide;
+
+      for (var i = 0; i < totalSlides; i++) {
+        var dot = document.createElement('span');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', function(idx) {
+          return function() { goToSlide(idx); };
+        }(i));
+        sliderDots.appendChild(dot);
+      }
+
+      function goToSlide(index) {
+        currentSlide = index;
+        sliderTrack.style.transform = 'translateX(-' + (index * 100) + '%)';
+        var dots = sliderDots.querySelectorAll('span');
+        dots.forEach(function(d, i) {
+          d.classList.toggle('active', i === index);
+        });
+      }
+
+      function nextSlide() {
+        goToSlide((currentSlide + 1) % totalSlides);
+      }
+
+      function resetAutoSlide() {
+        clearInterval(autoSlide);
+        autoSlide = setInterval(nextSlide, 5000);
+      }
+
+      autoSlide = setInterval(nextSlide, 5000);
+
+      // Touch/swipe
+      var sliderContainer = document.getElementById('sliderContainer');
+      var touchStartX = 0;
+      var touchEndX = 0;
+
+      sliderContainer.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      sliderContainer.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        var diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) nextSlide();
+          else goToSlide((currentSlide - 1 + totalSlides) % totalSlides);
+          resetAutoSlide();
+        }
+      }, { passive: true });
+    });
+  </script>
 
 </body>
 </html>

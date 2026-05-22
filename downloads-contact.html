@@ -6,246 +6,627 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grace School – Downloads & Contact</title>
-  <meta name="description" content="Download Grace School documents and get in touch with us.">
+  <meta name="description" content="Grace School – Rooted & Rising. Quality education rooted in faith, hope, and love — Gopalganj, Bihar, since 1998.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="css/grace.css?v=3">
+  <link rel="stylesheet" href="css/grace.css">
   <link rel="icon" href="https://www.graceschool.co.in/assets/img/cropped-Grace-School-Side-Logo.jpg">
+
+  <style>
+    /* ===== ROOTED & RISING — Design System ===== */
+    :root {
+      --rr-indigo: #23208C;
+      --rr-navy: #1A1460;
+      --rr-green: #1D5C2A;
+      --rr-gold: #F0C030;
+      --rr-tint: #F4F2FB;
+      --rr-white: #FFFFFF;
+      --rr-font-display: 'Playfair Display', Georgia, serif;
+      --rr-font-body: 'DM Sans', Helvetica, Arial, sans-serif;
+      --rr-font-mono: 'Space Mono', 'Courier New', monospace;
+      --rr-radius: 20px;
+      --rr-radius-pill: 100px;
+      --rr-transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .rr-body { font-family: var(--rr-font-body); color: var(--rr-indigo); line-height: 1.7; overflow-x: hidden; background: var(--rr-white); -webkit-font-smoothing: antialiased; }
+    .rr-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .rr-section { padding: 100px 0; }
+    .rr-section-white { background: var(--rr-white); }
+    .rr-section-tint { background: var(--rr-tint); }
+    @media (max-width: 768px) { .rr-section { padding: 64px 0; } }
+
+    /* ===== NAVBAR ===== */
+    .rr-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: transparent; transition: background 0.4s ease, border-color 0.4s ease; border-bottom: 1px solid transparent; }
+    .rr-header.scrolled { background: var(--rr-white); border-bottom: 2px solid var(--rr-indigo); box-shadow: 0 4px 30px rgba(35, 32, 140, 0.06); }
+    .rr-header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 14px 0; }
+    .rr-logo img { height: 54px; width: auto; display: block; }
+    .rr-nav ul { display: flex; align-items: center; gap: 2px; list-style: none; }
+    .rr-nav a { font-family: var(--rr-font-body); font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.9); padding: 8px 14px; border-radius: 8px; text-decoration: none; transition: var(--rr-transition); white-space: nowrap; letter-spacing: 0.3px; position: relative; }
+    .rr-header.scrolled .rr-nav a { color: var(--rr-indigo); }
+    .rr-nav a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%) scaleX(0); width: 60%; height: 2px; background: var(--rr-gold); border-radius: 2px; transition: transform 0.3s ease; }
+    .rr-nav a:hover::after, .rr-nav a.active::after { transform: translateX(-50%) scaleX(1); }
+    .rr-nav a:hover { color: var(--rr-gold) !important; }
+    .rr-nav a.active { color: var(--rr-gold) !important; }
+    .rr-header.scrolled .rr-nav a.active { color: var(--rr-gold) !important; }
+
+    .rr-header-actions .rr-btn-gold { display: inline-flex !important; align-items: center; gap: 8px; background: var(--rr-gold) !important; color: var(--rr-navy) !important; font-weight: 700 !important; padding: 10px 24px !important; border-radius: var(--rr-radius-pill) !important; font-size: 13px !important; letter-spacing: 0.3px; text-decoration: none; transition: var(--rr-transition); font-family: var(--rr-font-body); }
+    .rr-header-actions .rr-btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(240, 192, 48, 0.35); }
+
+    .rr-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; z-index: 1100; }
+    .rr-hamburger span { width: 26px; height: 2.5px; background: var(--rr-white); border-radius: 3px; transition: var(--rr-transition); }
+    .rr-header.scrolled .rr-hamburger span { background: var(--rr-indigo); }
+
+    .rr-mobile-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--rr-navy); z-index: 1050; flex-direction: column; align-items: center; justify-content: center; gap: 12px; opacity: 0; transition: opacity 0.4s ease; }
+    .rr-mobile-overlay.open { display: flex; opacity: 1; }
+    .rr-mobile-overlay a { font-family: var(--rr-font-body); font-size: 22px; font-weight: 600; color: var(--rr-gold); text-decoration: none; padding: 12px 24px; transition: var(--rr-transition); }
+    .rr-mobile-overlay a:hover { color: var(--rr-white); transform: scale(1.05); }
+    .rr-mobile-overlay .rr-close-btn { position: absolute; top: 24px; right: 24px; background: none; border: none; color: var(--rr-gold); font-size: 32px; cursor: pointer; padding: 8px; }
+
+    /* ===== PAGE HERO ===== */
+    .rr-page-hero { position: relative; padding: 180px 0 100px; background: linear-gradient(135deg, var(--rr-navy) 0%, var(--rr-indigo) 100%); overflow: hidden; }
+    .rr-page-hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; }
+    .rr-page-hero-content { position: relative; z-index: 2; text-align: center; }
+    .rr-tag { display: inline-block; font-family: var(--rr-font-mono); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 6px 20px; border-radius: var(--rr-radius-pill); margin-bottom: 20px; }
+    .rr-tag-green { background: var(--rr-green); color: var(--rr-white); }
+    .rr-page-title { font-family: var(--rr-font-display); font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 800; color: var(--rr-white); line-height: 1.1; margin-bottom: 16px; }
+    .rr-page-subtitle { font-family: var(--rr-font-body); font-size: clamp(1rem, 1.4vw, 1.2rem); color: rgba(255,255,255,0.75); max-width: 600px; margin: 0 auto; line-height: 1.6; }
+
+    /* ===== SECTION HEADERS ===== */
+    .rr-section-header { text-align: center; margin-bottom: 56px; }
+    .rr-section-header h2 { font-family: var(--rr-font-display); font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 700; color: var(--rr-indigo); line-height: 1.2; margin-bottom: 12px; }
+    .rr-section-header p { font-family: var(--rr-font-body); font-size: 15px; color: var(--rr-indigo); opacity: 0.6; max-width: 560px; margin: 0 auto; line-height: 1.7; }
+
+    /* ===== DOWNLOAD CARD ===== */
+    .rr-download-wrap { max-width: 500px; margin: 0 auto; }
+
+    .rr-download-card {
+      background: var(--rr-white);
+      border: 2px solid var(--rr-indigo);
+      border-radius: var(--rr-radius);
+      padding: 48px 40px;
+      text-align: center;
+      transition: var(--rr-transition);
+    }
+
+    .rr-download-card:hover {
+      border-color: var(--rr-gold);
+      box-shadow: 0 16px 48px rgba(240, 192, 48, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .rr-download-icon {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 24px;
+      background: var(--rr-tint);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: var(--rr-gold);
+      transition: var(--rr-transition);
+    }
+
+    .rr-download-card:hover .rr-download-icon {
+      background: var(--rr-gold);
+      color: var(--rr-navy);
+      transform: scale(1.08);
+    }
+
+    .rr-download-card h3 {
+      font-family: var(--rr-font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--rr-indigo);
+      margin-bottom: 10px;
+    }
+
+    .rr-download-card p {
+      font-family: var(--rr-font-body);
+      font-size: 14px;
+      color: var(--rr-indigo);
+      opacity: 0.6;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .rr-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--rr-font-body);
+      font-weight: 700;
+      font-size: 14px;
+      padding: 14px 32px;
+      border-radius: var(--rr-radius-pill);
+      text-decoration: none;
+      transition: var(--rr-transition);
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      border: none;
+    }
+
+    .rr-btn-gold {
+      background: var(--rr-gold) !important;
+      color: var(--rr-navy) !important;
+    }
+
+    .rr-btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(240, 192, 48, 0.35);
+    }
+
+    /* ===== CONTACT INFO + FORM GRID ===== */
+    .rr-contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .rr-contact-details h3 {
+      font-family: var(--rr-font-body);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--rr-indigo);
+      margin-bottom: 24px;
+    }
+
+    .rr-contact-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+
+    .rr-contact-item-icon {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      background: var(--rr-tint);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--rr-gold);
+      transition: var(--rr-transition);
+    }
+
+    .rr-contact-item:hover .rr-contact-item-icon {
+      background: var(--rr-gold);
+      color: var(--rr-navy);
+    }
+
+    .rr-contact-item-text h4 {
+      font-family: var(--rr-font-body);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--rr-indigo);
+      margin-bottom: 2px;
+    }
+
+    .rr-contact-item-text p {
+      font-family: var(--rr-font-body);
+      font-size: 13px;
+      color: var(--rr-indigo);
+      opacity: 0.6;
+      line-height: 1.6;
+    }
+
+    .rr-contact-item-text a {
+      color: var(--rr-green);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .rr-contact-item-text a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== CONTACT FORM ===== */
+    .rr-form-wrap {
+      background: var(--rr-tint);
+      border-radius: var(--rr-radius);
+      padding: 48px 40px;
+      border: 1px solid rgba(35, 32, 140, 0.06);
+    }
+
+    .rr-form-wrap .rr-section-header { margin-bottom: 32px; }
+    .rr-form-wrap .rr-section-header h2 { font-size: clamp(1.3rem, 2vw, 1.8rem); }
+
+    .rr-form-group { margin-bottom: 20px; }
+
+    .rr-form-group label {
+      display: block;
+      font-family: var(--rr-font-body);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--rr-indigo);
+      margin-bottom: 6px;
+      letter-spacing: 0.3px;
+    }
+
+    .rr-form-group label .rr-required { color: var(--rr-gold); }
+
+    .rr-form-group input,
+    .rr-form-group textarea {
+      width: 100%;
+      font-family: var(--rr-font-body);
+      font-size: 14px;
+      padding: 14px 18px;
+      border: 1.5px solid rgba(35, 32, 140, 0.12);
+      border-radius: 10px;
+      background: var(--rr-white);
+      color: var(--rr-indigo);
+      transition: var(--rr-transition);
+    }
+
+    .rr-form-group input:focus,
+    .rr-form-group textarea:focus {
+      outline: none;
+      border-color: var(--rr-gold);
+      box-shadow: 0 0 0 3px rgba(240, 192, 48, 0.15);
+    }
+
+    .rr-form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .rr-submit-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: var(--rr-gold);
+      color: var(--rr-navy) !important;
+      font-family: var(--rr-font-body);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 16px 32px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: var(--rr-transition);
+      letter-spacing: 0.3px;
+    }
+
+    .rr-submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(240, 192, 48, 0.3);
+    }
+
+    /* ===== MAP SECTION ===== */
+    .rr-map-wrap {
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: var(--rr-radius);
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(35, 32, 140, 0.06);
+      border: 1.5px solid var(--rr-indigo);
+    }
+
+    .rr-map-wrap iframe {
+      display: block;
+      width: 100%;
+    }
+
+    /* ===== REVEAL ===== */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== FOOTER ===== */
+    .rr-footer { background: var(--rr-navy); padding: 64px 0 0; }
+    .rr-footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 48px; }
+    .rr-footer-logo { height: 50px; width: auto; margin-bottom: 12px; background: var(--rr-white); padding: 4px 10px; border-radius: 8px; }
+    .rr-footer-tagline { font-family: var(--rr-font-body); font-size: 13px; font-style: italic; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
+    .rr-footer-social { display: flex; gap: 12px; }
+    .rr-footer-social a { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 50%; color: rgba(255,255,255,0.6); font-size: 15px; text-decoration: none; transition: var(--rr-transition); }
+    .rr-footer-social a:hover { background: var(--rr-gold); border-color: var(--rr-gold); color: var(--rr-navy); transform: translateY(-3px); }
+    .rr-footer h4 { font-family: var(--rr-font-body); font-size: 14px; font-weight: 700; color: var(--rr-white); margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+    .rr-footer-links { list-style: none; padding: 0; }
+    .rr-footer-links li { margin-bottom: 10px; }
+    .rr-footer-links a { font-family: var(--rr-font-body); font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: var(--rr-transition); }
+    .rr-footer-links a:hover { color: var(--rr-gold); padding-left: 6px; }
+    .rr-footer-contact { list-style: none; padding: 0; }
+    .rr-footer-contact li { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; font-family: var(--rr-font-body); font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+    .rr-footer-contact li i { margin-top: 3px; min-width: 16px; color: var(--rr-gold); }
+    .rr-footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); margin-top: 48px; padding: 20px 0; }
+    .rr-footer-bottom-inner { display: flex; justify-content: space-between; align-items: center; font-family: var(--rr-font-body); font-size: 13px; color: rgba(255,255,255,0.35); }
+    .rr-footer-credit { color: rgba(255,255,255,0.25); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .rr-nav { display: none; }
+      .rr-hamburger { display: flex; }
+      .rr-header-inner { padding: 12px 0; }
+      .rr-logo img { height: 44px; }
+      .rr-page-hero { padding: 150px 0 64px; }
+      .rr-contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .rr-footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    @media (max-width: 600px) {
+      .rr-section { padding: 56px 0; }
+      .rr-container { padding: 0 16px; }
+      .rr-page-hero { padding: 130px 0 48px; }
+      .rr-page-title { font-size: 1.8rem; }
+      .rr-download-card { padding: 36px 24px; }
+      .rr-form-wrap { padding: 32px 24px; }
+      .rr-contact-grid { gap: 32px; }
+      .rr-footer-bottom-inner { flex-direction: column; gap: 8px; text-align: center; }
+      .rr-header-actions { display: none; }
+    }
+  </style>
 </head>
-<body>
+<body class="rr-body">
 
-  <div class="site-wrapper">
-
-    <!-- Header -->
-    <header class="header" id="header">
-      <div class="container">
-        <div class="header-content">
-          <div class="header-logo">
-            <a href="index.html">
-              <img src="images/grace-logo-2.png?v=2" alt="Grace School">
-            </a>
-          </div>
-          <nav class="nav" id="mainNav">
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="grace-school.html">Grace School</a></li>
-              <li><a href="photos.html">Photos</a></li>
-              <li><a href="videos.html">Videos</a></li>
-              <li><a href="projects-partnerships.html">Projects & Partnerships</a></li>
-              <li><a href="volunteer.html">Volunteer of Grace</a></li>
-              <li><a href="downloads-contact.html" class="active">Downloads & Contact</a></li>
-            </ul>
-          </nav>
-          <div class="header-actions">
-            <a href="https://linktr.ee/vogtrust2021" target="_blank" class="btn-primary btn-sm">
-              <i class="fas fa-heart"></i> Volunteer
-            </a>
-          </div>
-          <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-          </button>
-        </div>
-      </div>
-    </header>
-
-    <!-- Page Hero -->
-    <section class="page-hero">
-      <div class="container">
-        <div class="page-hero-content">
-          <span class="hero-badge">Resources</span>
-          <h1>Download &amp; Contact Us</h1>
-          <p>Access documents, get in touch, or find us on the map</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Downloads Section -->
-    <section class="page-section cream-bg">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-label">Downloads</div>
-          <h2 class="section-heading">School <span class="text-accent">Documents</span></h2>
-          <p class="section-sub">Download important school documents and fee information.</p>
-        </div>
-        <div style="max-width:500px;margin:0 auto;">
-          <div class="download-card">
-            <div class="download-card-icon">
-              <i class="fas fa-file-pdf"></i>
-            </div>
-            <h3>School Fee &amp; Charges</h3>
-            <p>Download the latest fee structure and charge details for the academic year.</p>
-            <a href="#" class="btn-primary btn-lg">
-              <i class="fas fa-download"></i> Download PDF
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="page-section white-bg">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-label">Contact</div>
-          <h2 class="section-heading">Get In <span class="text-accent">Touch</span></h2>
-          <p class="section-sub">We'd love to hear from you. Reach out through any of the channels below.</p>
-        </div>
-        <div class="grid-2">
-          <div class="contact-info-card">
-            <h3 style="font-size:18px;font-weight:700;color:var(--navy);margin-bottom:20px;">Contact Information</h3>
-            <div class="contact-info-item">
-              <div class="contact-info-icon">
-                <i class="fas fa-map-marker-alt"></i>
-              </div>
-              <div class="contact-info-text">
-                <h4>Address</h4>
-                <p>Yadavpur Mission Road, Sareya Ward #2,<br>Gopalganj, Bihar – 841428, India</p>
-              </div>
-            </div>
-            <div class="contact-info-item">
-              <div class="contact-info-icon">
-                <i class="fas fa-phone-alt"></i>
-              </div>
-              <div class="contact-info-text">
-                <h4>Phone</h4>
-                <p>+91 9631977136<br>+91 9431453106</p>
-              </div>
-            </div>
-            <div class="contact-info-item">
-              <div class="contact-info-icon">
-                <i class="fab fa-whatsapp"></i>
-              </div>
-              <div class="contact-info-text">
-                <h4>WhatsApp</h4>
-                <p>+91 9546741191</p>
-              </div>
-            </div>
-            <div class="contact-info-item">
-              <div class="contact-info-icon">
-                <i class="fas fa-envelope"></i>
-              </div>
-              <div class="contact-info-text">
-                <h4>Email</h4>
-                <p>graceschool1998@gmail.com<br>info@graceschool.co.in</p>
-              </div>
-            </div>
-            <div class="contact-info-item">
-              <div class="contact-info-icon">
-                <i class="fas fa-globe"></i>
-              </div>
-              <div class="contact-info-text">
-                <h4>Webmail</h4>
-                <p><a href="https://webmail.graceschool.co.in/login.php" target="_blank" style="color:var(--green);">webmail.graceschool.co.in</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="contact-form-wrapper">
-            <div class="section-label">Get In Touch</div>
-            <h2 class="section-heading" style="font-size:clamp(1.3rem,2vw,1.8rem);">We'd Love to Hear <span class="text-accent">From You</span></h2>
-            <form id="contactForm" class="premium-form">
-              <div class="form-group">
-                <label>Name <span class="required">*</span></label>
-                <input type="text" required placeholder="Your full name">
-              </div>
-              <div class="form-group">
-                <label>Email <span class="required">*</span></label>
-                <input type="email" required placeholder="Your email address">
-              </div>
-              <div class="form-group">
-                <label>Mobile No <span class="required">*</span></label>
-                <input type="tel" maxlength="10" required placeholder="Your mobile number">
-              </div>
-              <div class="form-group">
-                <label>Message <span class="required">*</span></label>
-                <textarea rows="3" required placeholder="How can we help you?"></textarea>
-              </div>
-              <button type="submit" class="btn-primary btn-block">
-                Send Message <i class="fas fa-paper-plane"></i>
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Map Section -->
-    <section class="page-section cream-bg" style="padding-bottom:0;">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-label">Location</div>
-          <h2 class="section-heading">Find Us on <span class="text-accent">the Map</span></h2>
-        </div>
-        <div style="border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);max-width:800px;margin:0 auto;">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3571.1223686066032!2d84.44109749296373!3d26.484004594382505!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8fe959fb7c4a5956!2sGrace%20School!5e0!3m2!1sen!2sin!4v1649658144028!5m2!1sen!2sin" width="100%" height="400" style="border:0; display:block;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-main">
-        <div class="container">
-          <div class="footer-grid">
-            <div class="footer-col footer-brand">
-              <img src="images/grace-logo-2.png?v=2" alt="Grace School" class="footer-logo">
-              <p class="tagline">"Quality Education through Continuous Innovation"</p>
-              <div class="footer-social">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
-              </div>
-            </div>
-            <div class="footer-col">
-              <h4>Contact</h4>
-              <ul class="footer-contact">
-                <li>
-                  <i class="fas fa-map-marker-alt"></i>
-                  <span>Yadavpur Mission Road,<br>Sareya Ward #2, Gopalganj,<br>Bihar – 841428</span>
-                </li>
-                <li>
-                  <i class="fas fa-phone"></i>
-                  <span>+91 9631977136<br>+91 9431453106</span>
-                </li>
-                <li>
-                  <i class="fas fa-envelope"></i>
-                  <span>graceschool1998@gmail.com<br>info@graceschool.co.in</span>
-                </li>
-              </ul>
-            </div>
-            <div class="footer-col">
-              <h4>Quick Links</h4>
-              <ul class="footer-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="grace-school.html">Grace School</a></li>
-                <li><a href="photos.html">Photos</a></li>
-                <li><a href="videos.html">Videos</a></li>
-                <li><a href="projects-partnerships.html">Projects & Partnerships</a></li>
-                <li><a href="volunteer.html">Volunteer of Grace</a></li>
-                <li><a href="downloads-contact.html">Downloads & Contact Us</a></li>
-              </ul>
-            </div>
-            <div class="footer-col">
-              <h4>Location</h4>
-              <div class="footer-map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3571.1223686066032!2d84.44109749296373!3d26.484004594382505!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8fe959fb7c4a5956!2sGrace%20School!5e0!3m2!1sen!2sin!4v1649658144028!5m2!1sen!2sin" width="100%" height="200" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="container">
-          <div class="footer-bottom-content">
-            <p>&copy; 2026 <a href="index.html">Grace School</a>. All rights reserved.</p>
-            <p><a href="https://webmail.graceschool.co.in/login.php" target="_blank">Webmail</a></p>
-          </div>
-        </div>
-      </div>
-    </footer>
-
+  <!-- ===== MOBILE OVERLAY ===== -->
+  <div class="rr-mobile-overlay" id="mobileOverlay">
+    <button class="rr-close-btn" id="mobileClose" aria-label="Close menu">
+      <i class="fas fa-times"></i>
+    </button>
+    <a href="index.html">Home</a>
+    <a href="grace-school.html">Grace School</a>
+    <a href="photos.html">Photos</a>
+    <a href="videos.html">Videos</a>
+    <a href="projects-partnerships.html">Projects & Partnerships</a>
+    <a href="volunteer.html">Volunteer of Grace</a>
+    <a href="downloads-contact.html">Downloads & Contact</a>
   </div>
 
-  <script src="js/main.js"></script>
+  <!-- ===== HEADER / NAVBAR ===== -->
+  <header class="rr-header" id="header">
+    <div class="rr-container">
+      <div class="rr-header-inner">
+        <div class="rr-logo">
+          <a href="index.html">
+            <img src="images/grace-logo-2.png?v=2" alt="Grace School">
+          </a>
+        </div>
+        <nav class="rr-nav" id="mainNav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="grace-school.html">Grace School</a></li>
+            <li><a href="photos.html">Photos</a></li>
+            <li><a href="videos.html">Videos</a></li>
+            <li><a href="projects-partnerships.html">Projects & Partnerships</a></li>
+            <li><a href="volunteer.html">Volunteer of Grace</a></li>
+            <li><a href="downloads-contact.html" class="active">Downloads & Contact</a></li>
+          </ul>
+        </nav>
+        <div class="rr-header-actions">
+          <a href="https://linktr.ee/vogtrust2021" target="_blank" class="rr-btn rr-btn-gold">Volunteer</a>
+        </div>
+        <button class="rr-hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
 
+  <!-- ===== PAGE HERO ===== -->
+  <section class="rr-page-hero">
+    <div class="rr-container">
+      <div class="rr-page-hero-content">
+        <span class="rr-tag rr-tag-green">Contact</span>
+        <h1 class="rr-page-title">Download &amp; Contact Us</h1>
+        <p class="rr-page-subtitle">Get in touch with Grace School</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DOWNLOAD SECTION ===== -->
+  <section class="rr-section rr-section-tint">
+    <div class="rr-container">
+      <div class="rr-section-header reveal">
+        <span class="rr-tag rr-tag-green">Downloads</span>
+        <h2>School <span style="color:var(--rr-gold);">Documents</span></h2>
+        <p>Download important school documents and fee information.</p>
+      </div>
+      <div class="rr-download-wrap reveal">
+        <div class="rr-download-card">
+          <div class="rr-download-icon"><i class="fas fa-file-pdf"></i></div>
+          <h3>School Fee &amp; Charges</h3>
+          <p>Download the latest fee structure and charge details for the academic year.</p>
+          <a href="#" class="rr-btn rr-btn-gold"><i class="fas fa-download"></i> Download PDF</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT SECTION ===== -->
+  <section class="rr-section rr-section-white">
+    <div class="rr-container">
+      <div class="rr-section-header reveal">
+        <span class="rr-tag rr-tag-green">Contact</span>
+        <h2>Get In <span style="color:var(--rr-gold);">Touch</span></h2>
+        <p>We'd love to hear from you. Reach out through any of the channels below.</p>
+      </div>
+      <div class="rr-contact-grid">
+        <div class="rr-contact-details reveal">
+          <h3>Contact Information</h3>
+
+          <div class="rr-contact-item">
+            <div class="rr-contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="rr-contact-item-text">
+              <h4>Address</h4>
+              <p>Yadavpur Mission Road, Sareya Ward #2,<br>Gopalganj, Bihar – 841428, India</p>
+            </div>
+          </div>
+
+          <div class="rr-contact-item">
+            <div class="rr-contact-item-icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="rr-contact-item-text">
+              <h4>Phone</h4>
+              <p>+91 9631977136<br>+91 9431453106</p>
+            </div>
+          </div>
+
+          <div class="rr-contact-item">
+            <div class="rr-contact-item-icon"><i class="fab fa-whatsapp"></i></div>
+            <div class="rr-contact-item-text">
+              <h4>WhatsApp</h4>
+              <p>+91 9546741191</p>
+            </div>
+          </div>
+
+          <div class="rr-contact-item">
+            <div class="rr-contact-item-icon"><i class="fas fa-envelope"></i></div>
+            <div class="rr-contact-item-text">
+              <h4>Email</h4>
+              <p>graceschool1998@gmail.com<br>info@graceschool.co.in</p>
+            </div>
+          </div>
+
+          <div class="rr-contact-item">
+            <div class="rr-contact-item-icon"><i class="fas fa-globe"></i></div>
+            <div class="rr-contact-item-text">
+              <h4>Webmail</h4>
+              <p><a href="https://webmail.graceschool.co.in/login.php" target="_blank">webmail.graceschool.co.in</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rr-form-wrap reveal">
+          <div class="rr-section-header" style="margin-bottom:28px;">
+            <span class="rr-tag rr-tag-green">Get In Touch</span>
+            <h2 style="font-size:clamp(1.3rem, 2vw, 1.8rem);">We'd Love to Hear <span style="color:var(--rr-gold);">From You</span></h2>
+          </div>
+          <form id="contactForm" class="rr-form">
+            <div class="rr-form-group">
+              <label>Name <span class="rr-required">*</span></label>
+              <input type="text" required placeholder="Your full name">
+            </div>
+            <div class="rr-form-group">
+              <label>Email <span class="rr-required">*</span></label>
+              <input type="email" required placeholder="Your email address">
+            </div>
+            <div class="rr-form-group">
+              <label>Mobile No <span class="rr-required">*</span></label>
+              <input type="tel" maxlength="10" required placeholder="Your mobile number">
+            </div>
+            <div class="rr-form-group">
+              <label>Message <span class="rr-required">*</span></label>
+              <textarea rows="3" required placeholder="How can we help you?"></textarea>
+            </div>
+            <button type="submit" class="rr-submit-btn">
+              Send Message <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MAP SECTION ===== -->
+  <section class="rr-section rr-section-tint">
+    <div class="rr-container">
+      <div class="rr-section-header reveal">
+        <span class="rr-tag rr-tag-green">Location</span>
+        <h2>Find Us on <span style="color:var(--rr-gold);">the Map</span></h2>
+      </div>
+      <div class="rr-map-wrap reveal">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3571.1223686066032!2d84.44109749296373!3d26.484004594382505!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8fe959fb7c4a5956!2sGrace%20School!5e0!3m2!1sen!2sin!4v1649658144028!5m2!1sen!2sin" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="rr-footer">
+    <div class="rr-container">
+      <div class="rr-footer-grid">
+        <div class="rr-footer-col rr-footer-brand">
+          <img src="images/grace-logo-2.png?v=2" alt="Grace School" class="rr-footer-logo">
+          <p class="rr-footer-tagline">"Quality Education through Continuous Innovation"</p>
+          <div class="rr-footer-social">
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="mailto:graceschool1998@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="rr-footer-col">
+          <h4>Quick Links</h4>
+          <ul class="rr-footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="grace-school.html">Grace School</a></li>
+            <li><a href="photos.html">Photos</a></li>
+            <li><a href="videos.html">Videos</a></li>
+            <li><a href="projects-partnerships.html">Projects & Partnerships</a></li>
+            <li><a href="volunteer.html">Volunteer of Grace</a></li>
+            <li><a href="downloads-contact.html">Downloads & Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="rr-footer-col">
+          <h4>Contact</h4>
+          <ul class="rr-footer-contact">
+            <li><i class="fas fa-map-marker-alt"></i><span>Yadavpur Mission Road, Sareya Ward #2, Gopalganj, Bihar – 841428</span></li>
+            <li><i class="fas fa-phone"></i><span>+91 9631977136<br>+91 9431453106</span></li>
+            <li><i class="fas fa-envelope"></i><span>graceschool1998@gmail.com</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="rr-footer-bottom">
+      <div class="rr-container">
+        <div class="rr-footer-bottom-inner">
+          <p>&copy; 2026 Grace School. All rights reserved.</p>
+          <p class="rr-footer-credit">Built with ❤️ for Grace School</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var hamburger = document.getElementById('hamburger');
+      var overlay = document.getElementById('mobileOverlay');
+      var closeBtn = document.getElementById('mobileClose');
+      function openMobile() { overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+      function closeMobile() { overlay.classList.remove('open'); document.body.style.overflow = ''; }
+      hamburger.addEventListener('click', openMobile);
+      closeBtn.addEventListener('click', closeMobile);
+      overlay.querySelectorAll('a').forEach(function(l) { l.addEventListener('click', closeMobile); });
+
+      var header = document.getElementById('header');
+      window.addEventListener('scroll', function() { header.classList.toggle('scrolled', window.scrollY > 80); }, { passive: true });
+
+      // Contact form handler
+      var contactForm = document.getElementById('contactForm');
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var btn = contactForm.querySelector('.rr-submit-btn');
+          var original = btn.innerHTML;
+          btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+          btn.disabled = true;
+          setTimeout(function() {
+            btn.innerHTML = '<i class="fas fa-check-circle"></i> Message Sent!';
+            contactForm.reset();
+            setTimeout(function() {
+              btn.innerHTML = original;
+              btn.disabled = false;
+            }, 3000);
+          }, 1500);
+        });
+      }
+
+      var revealElements = document.querySelectorAll('.reveal');
+      var revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      revealElements.forEach(function(el) { revealObserver.observe(el); });
+    });
+  </script>
 </body>
 </html>
