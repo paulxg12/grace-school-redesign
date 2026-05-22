@@ -104,10 +104,18 @@ ul { list-style: none; }
   gap: 24px;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+}
+
 .logo img {
   height: 64px;
   width: auto;
   filter: brightness(1.05);
+  background: #fff;
+  padding: 6px 10px;
+  border-radius: 8px;
 }
 
 .nav ul {
@@ -1089,6 +1097,9 @@ ul { list-style: none; }
   height: 56px;
   width: auto;
   margin-bottom: 12px;
+  background: #fff;
+  padding: 5px 10px;
+  border-radius: 8px;
 }
 
 .footer-brand .tagline {
