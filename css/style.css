@@ -283,11 +283,23 @@ ul { list-style: none; }
   max-width: 650px;
 }
 
+.hero-logo {
+  height: 80px;
+  width: auto;
+  margin-bottom: 12px;
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .hero-badge {
   display: inline-block;
   padding: 6px 18px;
-  background: rgba(201,168,76,0.15);
-  border: 1px solid rgba(201,168,76,0.3);
+  background: rgba(56,178,90,0.12);
+  border: 1px solid rgba(56,178,90,0.25);
   color: var(--green);
   font-size: 12px;
   font-weight: 600;
