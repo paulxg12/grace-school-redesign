@@ -73,16 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
     goToSlide((currentSlide - 1 + totalSlides) % totalSlides);
   }
 
-  document.getElementById('nextBtn').addEventListener('click', () => {
-    nextSlide();
-    resetAutoSlide();
-  });
-
-  document.getElementById('prevBtn').addEventListener('click', () => {
-    prevSlide();
-    resetAutoSlide();
-  });
-
   function resetAutoSlide() {
     clearInterval(autoSlide);
     autoSlide = setInterval(nextSlide, 5000);
